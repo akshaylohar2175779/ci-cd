@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration-properties doc:name="Configuration properties" doc:id="fe44d879-90a2-4703-9299-813be709fbe8" file="myconfig.yaml" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="20ef51c3-b488-4c6c-9198-9338f9df9cca">
+		<http:listener-connection host="0.0.0.0" port="${http.port}"/>
+	</http:listener-config>
+	<flow name="ci-cdFlow" doc:id="ba7f6a73-0abb-408d-a995-1f833b892148" >
+		<http:listener doc:name="Listener" doc:id="4848caa4-1db0-438e-812d-d27ee042f5a4" path="base1" config-ref="HTTP_Listener_config"/>
+		<set-variable value="#[attributes.queryParams.num1]" doc:name="Set Variable" doc:id="08129166-e3a2-4a23-aa53-127ac4457758" variableName="a"/>
+		<set-variable value="#[attributes.queryParams.num2]" doc:name="Set Variable" doc:id="0963ed44-5a23-4263-a2e9-64e45d6d2db9" variableName="b"/>
+		<ee:transform doc:name="Transform Message" doc:id="7eb527e2-9929-4c17-b792-88ebb287e64e" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"addition" : vars.a as Number + vars.b as Number ,
+	"substraction" : vars.a as Number - vars.b as Number
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="b7dbedc5-2c59-4746-8be4-2cc3f1152829" message="#['completed']"/>
+	</flow>
+</mule>
