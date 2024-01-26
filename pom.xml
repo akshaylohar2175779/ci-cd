@@ -33,6 +33,7 @@
 				    <cloudHubDeployment>
 				      <uri>https://anypoint.mulesoft.com</uri>
 				      <muleVersion>${deploymentapp.runtime}</muleVersion>
+				      <businessGroup>dfsdf</businessGroup>
 				      <username>${anypoint.username}</username>
 				      <password>${anypoint.password}</password>
 				      <applicationName>${project.artifactId}</applicationName>
