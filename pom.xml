@@ -43,7 +43,7 @@
 				      <objectStoreV2>true</objectStoreV2>
 				      <properties>
 				        <key>${http.port}</key>
-				        <mule.env>${env}</mule.env>
+				        
 				      </properties>
 				    </cloudHubDeployment>
 			  </configuration>
