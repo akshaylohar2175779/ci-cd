@@ -32,19 +32,19 @@
 				<configuration>
 				    <cloudHubDeployment>
 				      <uri>https://anypoint.mulesoft.com</uri>
-				      <muleVersion>${deploymentapp.runtime}</muleVersion>
-				      <businessGroup>dfsdf</businessGroup>
-				      <username>${anypoint.username}</username>
-				      <password>${anypoint.password}</password>
-				      <applicationName>${project.artifactId}</applicationName>
-				      <environment>${env}</environment>
-				      <region>${deployment.region}</region>
-				      <workers>${deployment.workers}</workers>
-				      <workerType>${deployment.workerType}</workerType>
+				      <muleVersion>4.4.0</muleVersion>
+				      <businessGroup>dellc</businessGroup>
+				      <username>al0159330</username>
+				      <password>Akshay@123</password>
+				      <applicationName>ci-cd</applicationName>
+				      <environment>Sandbox</environment>
+				      <region>us-east-1</region>
+				      <workers>1</workers>
+				      <workerType>MICRO</workerType>
 				      <objectStoreV2>true</objectStoreV2>
 				      <properties>
-				        <key>${http.port}</key>
-				        <mule.env>${env}</mule.env>
+				        <key>8081</key>
+				        <mule.env>Sandbox</mule.env>
 				      </properties>
 				    </cloudHubDeployment>
 			  </configuration>
